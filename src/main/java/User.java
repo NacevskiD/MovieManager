@@ -4,6 +4,7 @@ public class User {
     private String lastName;
     private String userName;
     private String password;
+    private String email;
     User(){
 
     }
@@ -46,5 +47,13 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -1,97 +1,137 @@
+import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Movie {
-    private String name;
-    private String contentRating;
-    private Date releaseDate;
-    private String director;
-    private String imdbURL;
-    private String trailerURL;
-    private double rating;
-    private String imdbID;
-    private ArrayList genre;
-    private String description;
+    String title;
+    boolean adult;
+    String description;
+    int id;
+    String date;
+    String pictureURL;
+    String tagLine;
+    String imdb;
+    String rating;
+    String ytLink;
+    String voteCount;
+    ArrayList<String> actors;
+    ImageIcon icon;
+    double userRating;
+
+    public Movie() {
 
 
-
-    public String getName() {
-        return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getContentRating() {
-        return contentRating;
+    public ArrayList<String> getActors() {
+        return actors;
     }
 
-    public void setContentRating(String contentRating) {
-        this.contentRating = contentRating;
+    public void setActors(ArrayList<String> actors) {
+        this.actors = actors;
     }
 
-    public Date getReleaseDate() {
-        return releaseDate;
+    public double getUserRating() {
+        return userRating;
     }
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setUserRating(double userRating) {
+        this.userRating = userRating;
     }
 
-    public String getDirector() {
-        return director;
+    public ImageIcon getIcon() {
+
+        return icon;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
     }
 
-    public String getImdbURL() {
-        return imdbURL;
+    public boolean isAdult() {
+        return adult;
     }
 
-    public void setImdbURL(String imdbURL) {
-        this.imdbURL = imdbURL;
+    public String getVoteCount() {
+        return voteCount;
     }
 
-    public String getTrailerURL() {
-        return trailerURL;
+    public void setVoteCount(String voteCount) {
+        this.voteCount = voteCount;
     }
 
-    public void setTrailerURL(String trailerURL) {
-        this.trailerURL = trailerURL;
+    public String getPictureURL() {
+        return pictureURL;
     }
 
-    public double getRating() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+    public String getTagLine() {
+        return tagLine;
+    }
+
+    public void setTagLine(String tagLine) {
+        this.tagLine = tagLine;
+    }
+
+    public String getImdb() {
+        return imdb;
+    }
+
+    public void setImdb(String imdb) {
+        this.imdb = imdb;
+    }
+
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public String getImdbID() {
-        return imdbID;
+    public String getYtLink() {
+        return ytLink;
     }
 
-    public void setImdbID(String imdbID) {
-        this.imdbID = imdbID;
+    public void setYtLink(String ytLink) {
+        this.ytLink = ytLink;
     }
 
-    public ArrayList getGenre() {
-        return genre;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setGenre(ArrayList genre) {
-        this.genre = genre;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setPictureURL(String pictureURL) {
+        this.pictureURL = pictureURL;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public int getId() {
+        return id;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

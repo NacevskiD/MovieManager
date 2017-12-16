@@ -4,19 +4,17 @@ import java.util.List;
 
 
 public class Database {
-    String DB = "jdbc:sqlite:Movie.db";
-    private static final int DATABASE_VERSION = 2;
+
+    String url = "jdbc:mysql://localhost:3306/Movie";
+    String username = "user1";
+    String password = "password";
 
 
     Database() {
-        try (Connection conn = DriverManager.getConnection(DB)) {
-            if (conn != null) {
-                DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
-            }
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            System.out.println("Database connected!");
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new IllegalStateException("Cannot connect the database!", e);
         }
 
     }
@@ -25,14 +23,14 @@ public class Database {
         void createTable(){
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Users ("
-                + "id integer PRIMARY KEY,"
+                + "id INT PRIMARY KEY,"
                 + "firstName TEXT NOT NULL,"
                 + "lastName TEXT NOT NULL,"
                 + "userName TEXT NOT NULL,"
                 + "password TEXT NOT NULL"
                 + ");";
 
-        try (Connection conn = DriverManager.getConnection(DB);
+        try (Connection conn = DriverManager.getConnection(url, username, password);
              Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
@@ -46,9 +44,9 @@ public class Database {
     }
 
     void dropTable() {
-        String sql = "DROP TABLE";
+        String sql = "DROP TABLE Logins";
 
-        try (Connection conn = DriverManager.getConnection(DB);
+        try (Connection conn = DriverManager.getConnection(url, username, password);
              Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
@@ -61,7 +59,7 @@ public class Database {
 
     ArrayList selectAll(){
         String sql = "SELECT * FROM Users";
-        try (Connection conn = DriverManager.getConnection(DB);
+        try (Connection conn = DriverManager.getConnection(url, username, password);
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             ArrayList<User> resuts = new ArrayList();
@@ -87,7 +85,7 @@ public class Database {
     void addUser(String firstName, String lastName, String userName, String password){
         String sql = "INSERT INTO Users(firstName,lastName,userName,password) VALUES(?,?,?,?);";
 
-        try (Connection conn = DriverManager.getConnection(DB);
+        try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);
